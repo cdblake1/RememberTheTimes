@@ -1,0 +1,21 @@
+.buttons {
+    width: 40%;
+    border-radius: 0px;
+    padding: 10px;
+    margin: 5px;
+    font-family: "Montserrat";
+    letter-spacing: 1px;
+    
+}
+
+.sign-up {
+    background-color: var(--primary-color);
+}
+
+.featured {
+    background-color: var(--tertiary-color);
+}
+
+.b-container {
+    padding-top: 2em;
+}

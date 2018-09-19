@@ -1,0 +1,8 @@
+.info-section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header-label {
+    margin-right: .5em;
+}

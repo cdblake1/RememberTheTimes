@@ -1,0 +1,64 @@
+.login {
+    margin: 0 auto 0 auto;
+    color: #333;
+}
+
+
+.login-title-section {
+    margin: 5em 0 5em -15em;
+
+}
+
+.login-title {
+    font-size: 1.75em;
+    font-weight: 700;
+}
+
+.login-subtitle {
+    font-size: 1.1em;
+    font-family: Aileron;
+}
+
+.login-section {
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 5% 10% 5% 5%;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.login-input {
+    padding: 2%;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.login-button-section {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.login-button {
+    width: 50%;
+    padding: 1%;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #aeaeae;
+    color: #6f6f6f;
+    cursor: pointer;
+}
+
+.login-button:nth-child(1) {
+    margin: 0 1% 0 0;
+}
+
+.login-button:nth-child(2) {
+    margin: 0 0 0 1%;
+}
+
+.login-button a {
+    color: #6f6f6f;
+}

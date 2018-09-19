@@ -1,0 +1,8 @@
+.form-row {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid #eaeaea;
+    padding: .5em;
+    margin-bottom: .75em;
+    color: #333;
+}

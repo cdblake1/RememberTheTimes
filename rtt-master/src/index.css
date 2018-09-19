@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Tajawal');
+
+@font-face {
+  font-family: Aileron;
+  src: url(./Utilities/fonts/aileron/Aileron-SemiBold.otf);
+}
+:root {
+  --primary-color: #42ffc0;
+  --secondary-color: #e342ff;
+  --tertiary-color: #ff9a57;
+  --bg-color: #FFFFFF;
+}
+
+body {
+  color: #2F3237;
+  /* font-family: 'Aileron'; */
+  font-size: 12px;
+  background-color: #FFFFF0;
+}
+
+.view-bg .row {
+  background-color: var(--bg-color);
+}
+
+.section {
+  margin-bottom: 2em;
+}

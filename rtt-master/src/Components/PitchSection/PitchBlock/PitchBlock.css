@@ -1,0 +1,15 @@
+.pitch-block {
+    text-align: center;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 5px;
+    margin-bottom: .5em;
+}
+
+.body {
+    font-size: 1em;
+}

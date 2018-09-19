@@ -1,0 +1,15 @@
+.form-submit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: .50em;
+    font-size: 1.25em;
+    background-color: #328532;
+    cursor: pointer;
+    transition: .3s all;
+    user-select: none;
+}
+
+.form-submit:hover {
+    opacity: .8;
+}

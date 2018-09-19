@@ -1,0 +1,9 @@
+.form-input {
+    border: 0px;
+    width: 70%;
+    cursor: pointer;
+}
+
+.form-row:hover {
+    box-shadow: 2px 2px 3px #d5d3d1 inset;
+}
