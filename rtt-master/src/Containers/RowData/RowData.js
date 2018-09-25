@@ -7,9 +7,11 @@ class RowData extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            test: "test",
-            isChecked: false
+            isChecked: false,
+            data: this.props.data
         }
+
+        this.callback = this.callback.bind(this);
     }
 
     render() {
@@ -24,19 +26,23 @@ class RowData extends Component {
     }
 
     isChecked() {
-        console.log("ISCHECKED EXECUTED", this.state.isChecked);
-        return (this.state.isChecked) ? <DataInput /> : <DataDisplay />;
+        console.log('ISCHECKED EXECUTED', this.state.isChecked);
+        return (this.state.isChecked) ? <DataInput data={this.state.data} callback={this.callback} /> : <DataDisplay data={this.state.data} />;
     }
 
     toggleChecked() {
-        console.log("clicked!")
-        console.log("BEFORE", this.state.isChecked);
+        console.log('clicked!')
+        console.log('BEFORE', this.state.isChecked);
         this.setState(() => {
             return { isChecked: !this.state.isChecked }
         })
         console.log(this.state);
-        console.log("AFTER", this.state.isChecked);
+        console.log('AFTER', this.state.isChecked);
 
+    }
+
+    callback(data) {
+        this.setState({ data });
     }
 }
 

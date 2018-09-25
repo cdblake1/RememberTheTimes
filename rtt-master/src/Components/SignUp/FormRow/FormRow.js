@@ -7,8 +7,8 @@ class FormRow extends Component {
     render() {
         return (
             <div className="form-row">
-               <FormLabel label={this.props.label} />
-               <FormInput label={this.props.label} callback={this.props.callback}/>
+                <FormLabel label={this.props.label} />
+                <FormInput label={this.props.label} callback={this.props.callback} />
             </div>
         );
     }

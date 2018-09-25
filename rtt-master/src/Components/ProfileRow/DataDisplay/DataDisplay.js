@@ -4,7 +4,7 @@ import './DataDisplay.css';
 class DataDisplay extends Component {
     render() {
         return (
-            <div>DataDisplay</div>
+            <div>{this.props.data}</div>
         );
     }
 }

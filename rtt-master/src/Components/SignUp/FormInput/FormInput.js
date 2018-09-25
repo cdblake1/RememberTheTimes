@@ -5,7 +5,7 @@ class FormInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ""
+            value: ''
         }
 
         this.updateData = this.updateData.bind(this);
@@ -16,8 +16,8 @@ class FormInput extends Component {
         );
     }
 
-    updateData(event){
-        this.setState({value: event.target.value},()=> {this.props.callback(this.props.label, this.state.value)});
+    updateData(event) {
+        this.setState({ value: event.target.value }, () => { this.props.callback(this.props.label, this.state.value) });
     }
 }
 
