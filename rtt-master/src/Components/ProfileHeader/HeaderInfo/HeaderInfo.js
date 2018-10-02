@@ -12,7 +12,7 @@ class HeaderInfo extends Component {
     }
 
     hasLabel() {
-        return (this.props.label == '') ? <div></div> : <div className="header-label">{this.props.label}:</div>;
+        return (this.props.label === '') ? <div></div> : <div className="header-label">{this.props.label}:</div>;
     }
 }
 

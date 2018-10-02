@@ -1,28 +1,43 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
-const UserSchema = new Schema({
+const { Schema } = mongoose;
 
-    firstName: {
-        type: String, required: [true, 'Please enter your first name.']
-    },
-    lastName: {
-        type: String, required: [true, 'Please enter your last name.']
-    },
-    Email: {
-        type: String,
-        required: 'Please enter a valid email address'
-    },
-    Password: {
-        type: String,
-        required: [true, 'Please enter a password']
-    },
-    Age: { type: String, required: true },
-    Sex: { type: String, required: true },
-    Address: { type: String, required: true },
-    City: { type: String, required: true },
-    State: { type: String, required: true },
-    ZipCode: { type: Number, required: true }
-})
+const UsersSchema = new Schema({
+    email: String,
+    hash: String,
+    salt: String,
+});
 
-module.exports = mongoose.model('User', UserSchema);
+UsersSchema.methods.setPassword = function (password) {
+    this.salt = crypto.randomBytes(16).toString('hex');
+    this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 256, 'sha256').toString('hex');
+};
+
+UsersSchema.methods.validatePassword = function (password) {
+    const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 256, 'sha256').toString('hex');
+    return this.hash === hash;
+};
+
+UsersSchema.methods.generateJWT = function () {
+    const today = new Date();
+    const expirationDate = new Date(today);
+    expirationDate.setDate(today.getDate() + 60);
+
+    return jwt.sign({
+        email: this.email,
+        id: this._id,
+        exp: parseInt(expirationDate.getTime() / 1000, 10),
+    }, 'secret');
+}
+
+UsersSchema.methods.toAuthJSON = function () {
+    return {
+        _id: this._id,
+        email: this.email,
+        token: this.generateJWT(),
+    };
+};
+
+mongoose.model('Users', UsersSchema);

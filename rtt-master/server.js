@@ -1,32 +1,66 @@
-(function () {
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const errorHandler = require('errorHandler');
 
-    const express = require('express');
-    const bodyParser = require('body-parser');
-    const mongoose = require('mongoose');
+mongoose.promise = global.Promise;
 
-    const user = require('./Routes/User.routes');
-    const app = express();
-    let port = 1234;
+const isProduction = process.env.NODE_ENV === 'production';
 
-    //==========DATABASE CONNECTION==========
-    const DB_URL = 'mongodb://localhost:27017/app_db';
-    mongoose.connect(DB_URL);
-    mongoose.Promise = global.Promise;
+const app = express();
 
-    let db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'MongoDB connection error: '));
+//Configure ourn napp
+app.use(cors());
+app.use(require('morgan')('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'build')));
+app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
 
+if (!isProduction) {
+    app.use(errorHandler());
+}
 
+//Configure Mongoose
+mongoose.connect('mongodb://localhost:27017/app_db');
+mongoose.set('debug', true);
 
-    //==========ROUTES==========
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }))
-    app.use('/users', user);
+require('./models/user.model');
+require('./configuration/passport.config');
+app.use(require('./routes/index.routes'));
 
-    app.listen(port, () => {
-        console.log('Server Live on port: ' + port);
+//Error handlers & middlewares
+if (!isProduction) {
+    app.use((err, req, res) => {
+        res.status(err.status || 500);
+
+        res.json({
+            errors: {
+                message: err.message,
+                error: err
+            }
+        });
     });
+}
+
+app.use((err, req, res) => {
+    res.status(err.status || 500);
+
+    res.json({
+        errors: {
+            message: err.message,
+            errors: {
+            }
+        }
+    })
+})
 
 
-})();
+app.get('/', function (req, res) {
+    res.send(path.resolve(__dirname, 'public', 'index.html'));
+});
+app.listen(8000, () => console.log('Server running on http://localhost:8000'));

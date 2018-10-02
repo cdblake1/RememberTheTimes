@@ -17,7 +17,7 @@ class FormInput extends Component {
     }
 
     updateData(event) {
-        this.setState({ value: event.target.value }, () => { this.props.callback(this.props.label, this.state.value) });
+        this.setState({ value: event.target.value }, () => { this.props.callback(this.props.label.toLowerCase(), this.state.value) });
     }
 }
 

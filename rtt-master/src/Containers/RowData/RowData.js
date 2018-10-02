@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './RowData.css';
 import DataDisplay from '../../Components/ProfileRow/DataDisplay/DataDisplay';
 import DataInput from '../../Components/ProfileRow/DataInput/DataInput';
+import * as Users from '../../Services/users.service';
 
 class RowData extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class RowData extends Component {
             isChecked: false,
             data: this.props.data
         }
-
+        this.getUserProperties();
         this.callback = this.callback.bind(this);
     }
 
@@ -26,23 +27,24 @@ class RowData extends Component {
     }
 
     isChecked() {
-        console.log('ISCHECKED EXECUTED', this.state.isChecked);
         return (this.state.isChecked) ? <DataInput data={this.state.data} callback={this.callback} /> : <DataDisplay data={this.state.data} />;
     }
 
     toggleChecked() {
-        console.log('clicked!')
-        console.log('BEFORE', this.state.isChecked);
         this.setState(() => {
             return { isChecked: !this.state.isChecked }
         })
-        console.log(this.state);
-        console.log('AFTER', this.state.isChecked);
+    }
 
+    getUserProperties() {
+        const data = Users.getInfo();
+        console.log(data);
+
+        this.setState(() => { data: data }, () => console.log(this.state.data));
     }
 
     callback(data) {
-        this.setState({ data });
+        this.setState({ data: data });
     }
 }
 
