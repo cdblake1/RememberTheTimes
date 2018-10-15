@@ -2,9 +2,22 @@ import React, { Component } from 'react';
 import './Login.css';
 import FacebookLogin from './FacebookLogin/FacebookLogin';
 import GoogleLogin from './GoogleLogin/GoogleLogin';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import * as users from '../../Services/users.service';
 class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
+
+        this.updateEmail = this.updateEmail.bind(this);
+        this.updatePassword = this.updatePassword.bind(this);
+    }
+
     render() {
+
         return (
             <div className="login">
                 <div className="login-title-section">
@@ -15,10 +28,10 @@ class Login extends Component {
                 {/*<FacebookLogin />
                 <GoogleLogin />*/}
                 <div>
-                    <input className="login-input" type="email" placeholder="email address"></input>
+                    <input className="login-input" type="email" placeholder="email address" value={this.state.email} onChange={this.updateEmail}></input>
                 </div>
                 <div>
-                    <input className="login-input" type="password" placeholder="password"></input>
+                    <input className="login-input" type="password" placeholder="password" value={this.state.password} onChange={this.updatePassword}></input>
                 </div>
                 <div className="login-button-section">
                     <div className="login-button">Login</div>
@@ -29,6 +42,15 @@ class Login extends Component {
             </div>
         );
     }
+
+    updateEmail(event) {
+        this.setState({ email: event.target.value }, () => { console.log(this.state.email) });
+    }
+
+    updatePassword(event) {
+        this.setState({ password: event.target.value }, () => { console.log(this.state.email) });
+    }
+
 }
 
 export default Login;

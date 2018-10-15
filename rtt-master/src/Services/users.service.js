@@ -1,23 +1,37 @@
-
 import axios from 'axios';
+import cookies from 'js-cookie';
 
 export const getInfo = function () {
-    axios.get('/api/users/current')
-        .then(res => res);
+    const token = cookies.get('rtt-token');
+    return axios({
+        method: 'get',
+        url: '/api/users/current',
+        headers: {
+            'Authorization': 'Token ' + token
+        }
+    })
 }
 
-export const register = function (email, password) {
+export const register = function (data) {
+    console.log(data);
     axios.post('/api/users', {
-        user: { email, password }
+        user: data
     })
         .then((res) => {
-            login(email, password);
+            login(data.email, data.password);
         });
 }
 
 export const login = function (email, password) {
     axios.post('/api/users/login', { user: { email, password } })
-        .then(alert('Login successful for ' + email));
+        .then(function (res) {
+            cookies.set('rtt-token', res.data.user.token);
+            console.log(cookies.get('rtt-token'));
+        });
+}
+
+export const logout = function () {
+    return axios.get('/api/users/logout')
 }
 
 

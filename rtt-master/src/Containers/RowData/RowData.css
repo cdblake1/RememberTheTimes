@@ -1,11 +1,7 @@
 .data-toggle-button {
     padding: 5px;
-    font-size: .85em;
+    font-size: 1.75em;
     cursor: pointer;
-    border: .5px solid #333;
     margin-left: 1em;
     user-select: none;
-}
-
-.rowData-container {
 }

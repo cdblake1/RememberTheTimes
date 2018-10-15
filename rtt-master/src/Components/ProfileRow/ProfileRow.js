@@ -8,7 +8,7 @@ class ProfileRow extends Component {
         return (
             <div className="profile-row col-md-12 flex-row">
                 <ProfileLabel title={this.props.title} />
-                <RowData data={this.props.title} />
+                <RowData data={this.props.data} />
             </div>
         );
     }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Navbar.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavItem from './NavItem/NavItem';
+import ToggleLogin from './ToggleLogin/ToggleLogin';
 
 class Navbar extends Component {
     render() {
@@ -14,20 +15,18 @@ class Navbar extends Component {
                             <span className="navbar-brand branding">Remember The Times</span>
                         </Link>
                         <ul className="navbar-nav mx-auto">
-                        <Link to="/">
-                            <NavItem link="#" title="Home" />
-                        </Link>
-                        <Link to="/featured">
-                            <NavItem link="#" title="Featured" />
-                        </Link>
-                        <Link to="/profile">
-                            <NavItem link="#" title="Profile" />
-                        </Link>
+                            <Link to="/">
+                                <NavItem link="#" title="Home" />
+                            </Link>
+                            <Link to="/featured">
+                                <NavItem link="#" title="Featured" />
+                            </Link>
+                            <Link to="/profile">
+                                <NavItem link="#" title="Profile" />
+                            </Link>
                         </ul>
                         <ul className="navbar-nav nav-sign-up flex-row-reverse">
-                            <Link to="/login">
-                                <NavItem link="#" title="Login" />
-                            </Link>
+                            <ToggleLogin />
                         </ul>
                     </div>
                 </nav>

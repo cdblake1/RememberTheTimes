@@ -8,6 +8,7 @@
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
     "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",
     "errorhandler": "^1.5.0",
@@ -19,10 +20,12 @@
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
+    "js-cookie": "^2.2.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.13",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "popper": "^1.0.1",
@@ -33,9 +36,9 @@
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
+    "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

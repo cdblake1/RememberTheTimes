@@ -32,14 +32,29 @@ class FormDataContainer extends Component {
     }
 
     setUserData = (label, data) => {
-        this.setState({ [label]: data }, () => console.log(this.state));
+        this.setState({ [label.replace(' ', '').toLowerCase()]: data }, () => console.log(this.state));
 
     }
-    CREATE_UserData() {
-        return () => {
-            users.register(this.state.email, this.state.password);
-        }
-    }
+    // CREATE_UserData() {
+    //     return () => {
+    //         const data = {
+    //             firstname: this.state.firstname,
+    //             lastname: this.state.lastname,
+    //             email: this.state.email,
+    //             password: this.state.password,
+    //             age: this.state.age,
+    //             sex: this.state.sex,
+    //             address: this.state.address,
+    //             city: this.state.city,
+    //             state: this.state.state,
+    //             zipcode: this.state.zipcode
+    //         }
+
+    //         console.log(data);
+
+    //         users.register(data);
+    //     }
+    // }
 }
 
 export default FormDataContainer;

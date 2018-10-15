@@ -5,7 +5,7 @@ class NavItem extends Component {
     render() {
         return (
             <li className="nav-item active">
-                <a className="nav-link" href={this.props.link}>{this.props.title}</a>
+                <div className="nav-link" >{this.props.title}</div>
             </li>
         );
     }

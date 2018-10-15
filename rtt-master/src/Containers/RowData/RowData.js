@@ -9,38 +9,30 @@ class RowData extends Component {
         super(props);
         this.state = {
             isChecked: false,
-            data: this.props.data
+            data: props.data
         }
-        this.getUserProperties();
         this.callback = this.callback.bind(this);
     }
 
     render() {
+        console.log(this.props.data);
         return (
             <div className="rowData-container">
                 {this.isChecked()}
-                <div className="data-toggle-button" onClick={this.toggleChecked.bind(this)}>
-                    t
+                <div className="far fa-edit data-toggle-button" onClick={this.toggleChecked.bind(this)}>
                 </div>
             </div>
         );
     }
 
     isChecked() {
-        return (this.state.isChecked) ? <DataInput data={this.state.data} callback={this.callback} /> : <DataDisplay data={this.state.data} />;
+        return (this.state.isChecked) ? <DataInput data={this.props.data} callback={this.callback} /> : <DataDisplay data={this.props.data} />;
     }
 
     toggleChecked() {
         this.setState(() => {
             return { isChecked: !this.state.isChecked }
         })
-    }
-
-    getUserProperties() {
-        const data = Users.getInfo();
-        console.log(data);
-
-        this.setState(() => { data: data }, () => console.log(this.state.data));
     }
 
     callback(data) {
